@@ -13,9 +13,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/Demystifier-git/Gitops-with-ArgoCD.git
-    targetRevision: main
-    path: kubernetes.yamlfiles
+    repoURL: https://github.com/Demystifier-git/Deployment-strategy-and-Gitops-with-ArgoCD.git
+    targetRevision: Rollback update
+    path: 
   destination:
     server: https://kubernetes.default.svc
     namespace: default

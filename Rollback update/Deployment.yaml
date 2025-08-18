@@ -23,7 +23,7 @@ spec:
       - name: myapp
         image: demystifier803/social12-php   # 👈 your image
         ports:
-        - containerPort: 8080          # 👈 adjust if needed
+        - containerPort: 80        # 👈 adjust if needed
         resources:
           requests:
             cpu: "100m"
@@ -34,13 +34,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
         livenessProbe:
           httpGet:
             path: /
-            port: 8080
+            port: 80
           initialDelaySeconds: 15
           periodSeconds: 10
 ---
@@ -54,7 +54,7 @@ spec:
     app: myapp
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 80
       nodePort: 30080
 ---
 apiVersion: autoscaling/v2
