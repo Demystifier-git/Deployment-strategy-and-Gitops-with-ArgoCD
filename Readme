@@ -1,0 +1,82 @@
+📂 Deployment-strategy-and-Gitops-with-ArgoCD/README.md
+
+# 🚀 Deployment Strategies & GitOps with Argo CD
+
+This project demonstrates how to deploy and manage a **containerized application** on Kubernetes using:
+- **Rolling Updates** for zero-downtime deployments  
+- **Horizontal Pod Autoscaler (HPA)** for auto-scaling under load  
+- **Jobs & Load Generators** for traffic simulation  
+- **Argo CD** for GitOps-driven automation  
+
+---
+
+## 📌 Features
+- Rolling update strategy with controlled surge/unavailable Pods  
+- Readiness & liveness probes for self-healing  
+- Resource requests/limits to enable autoscaling  
+- HPA scaling between 2–6 replicas based on CPU utilization  
+- Load simulation with Jobs and Deployments  
+- Automated GitOps sync with Argo CD  
+- Optional **Argo CD Image Updater** for auto-deploying new container versions  
+
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repo
+```bash
+git clone https://github.com/Demystifier-git/Deployment-strategy-and-Gitops-with-ArgoCD.git
+cd Deployment-strategy-and-Gitops-with-ArgoCD
+
+2. Switch Branch to Main
+git branch -m master main
+git push -u origin main
+git push origin --delete master
+
+3. Deploy Application
+kubectl apply -f kubernetes.yamlfiles/
+
+4. Verify Deployment
+kubectl get pods
+kubectl get svc
+
+5. Trigger Rolling Update
+kubectl set image deployment/myapp-deployment myapp=demystifier/myapp:2.0
+kubectl rollout status deployment/myapp-deployment
+
+6. Horizontal Pod Autoscaler
+kubectl get hpa
+kubectl get pods -w
+
+7. Deploy with Argo CD
+kubectl apply -f argo-app-myapp.yaml -n argocd
+kubectl get applications -n argocd
+📊 Scaling Test
+Run a load generator Job for 10 minutes:
+
+
+kubectl apply -f load-generator-job.yaml
+kubectl get pods
+kubectl logs <load-pod-name>
+Pods will scale up under load and scale down automatically when traffic reduces.
+Jobs will clean up automatically when finished. ✅
+
+🔄 GitOps Workflow with Argo CD
+Commit & push manifest updates to GitHub
+
+Argo CD detects changes → syncs with cluster
+
+Kubernetes handles rolling update automatically
+
+🔮 Future Enhancements
+Add CI/CD pipeline with GitHub Actions
+
+Automate image tag updates with Argo CD Image Updater
+
+Integrate monitoring dashboards with Prometheus & Grafana
+
+📌 Repository
+👉 Deployment-strategy-and-Gitops-with-ArgoCD
+
+👨‍💻 Author
+Delight David
+DevOps Engineer | Cloud & Kubernetes Enthusiast

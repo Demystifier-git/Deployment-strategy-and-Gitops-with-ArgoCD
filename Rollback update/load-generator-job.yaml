@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: load-generator-job
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: load-generator
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+          - start=$(date +%s);
+            while [ $(($(date +%s) - $start)) -lt 600 ]; do
+              wget -q -O- http://myapp-service.default.svc.cluster.local > /dev/null;
+              sleep 0.01;
+            done
