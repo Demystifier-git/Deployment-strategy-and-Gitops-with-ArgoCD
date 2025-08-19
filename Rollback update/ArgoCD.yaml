@@ -14,8 +14,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/Demystifier-git/Deployment-strategy-and-Gitops-with-ArgoCD.git
-    targetRevision: Rollback update
-    path: 
+    targetRevision: main
+    path: Rollback update
   destination:
     server: https://kubernetes.default.svc
     namespace: default
