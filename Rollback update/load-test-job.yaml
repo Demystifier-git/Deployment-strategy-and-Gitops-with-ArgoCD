@@ -10,10 +10,11 @@ spec:
       containers:
       - name: load-test-runner
         image: bitnami/kubectl:latest
-        command: ["/bin/sh", "-c"]
-        args:
+        command:
+          - /bin/sh
+          - -c
           - |
-            echo "👉 Deploying load generator + HPA";
+            echo "👉 Deploying load generator + HPA"
             cat <<EOF | kubectl apply -f -
 apiVersion: apps/v1
 kind: Deployment
@@ -34,14 +35,12 @@ spec:
         image: busybox
         command: ["/bin/sh", "-c"]
         args:
-          - while true; do
-              wget -q -O- http://myapp-service.default.svc.cluster.local > /dev/null;
-              sleep 0.01;
+          - |
+            while true; do
+              wget -q -O- http://myapp-service.default.svc.cluster.local >/dev/null 2>&1
+              sleep 0.01
             done
         resources:
-          requests:
-            cpu: "50m"
-            memory: "64Mi"
           limits:
             cpu: "200m"
             memory: "128Mi"
@@ -73,3 +72,4 @@ EOF
             kubectl delete deployment load-generator
             kubectl delete hpa load-generator-hpa
             echo "✅ Done"
+
