@@ -77,6 +77,30 @@ Integrate monitoring dashboards with Prometheus & Grafana
 📌 Repository
 👉 Deployment-strategy-and-Gitops-with-ArgoCD
 
+# 🚀 Canary Release with Kubernetes
+
+This project shows how to safely roll out new versions of an application using **Kubernetes Canary Releases**.  
+Instead of replacing everything at once, we gradually send a small portion of traffic to the new version while most users stay on the stable version.
+
+---
+
+## 📌 What is a Canary Release?
+A **canary release** is a deployment strategy where:
+- You deploy a new version (canary) alongside the current stable version.
+- Only a small percentage of traffic goes to the canary.
+- If everything looks good, you increase traffic gradually until the canary becomes the new stable.
+- If issues show up, you roll back quickly without affecting all users.
+
+Think of it like sending a *canary bird into the coal mine first* — if it’s safe, everyone else follows 🐦.
+
+---
+
+## 🛠️ What’s Inside
+- **Deployments** for `stable` and `canary` versions of the app.
+- **Services** to route traffic.
+- **Ingress / Istio VirtualService** (depending on setup) to split traffic between versions.
+- Sample app to test how requests are served by different versions.
+
 👨‍💻 Author
 Delight David
 DevOps Engineer | Cloud & Kubernetes Enthusiast
