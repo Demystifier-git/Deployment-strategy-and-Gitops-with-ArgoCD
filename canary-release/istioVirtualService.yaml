@@ -7,7 +7,7 @@ spec:
   hosts:
   - "*"   # accept any host header (or use a real DNS name if you have one)
   gateways:
-  - istio-system/ingressgateway   # bind to ingress gateway
+  - myapp-gateway   # bind to ingress gateway
   http:
   - route:
     - destination:
