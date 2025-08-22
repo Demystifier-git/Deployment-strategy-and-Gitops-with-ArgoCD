@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: default   # 👈 change if you’re not using default
-  labels:
-    istio-injection: enabled
