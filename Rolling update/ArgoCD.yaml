@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp
+  namespace: argocd
+  annotations:
+    # 👇 Enable image updater
+    argocd-image-updater.argoproj.io/image-list: myapp=demystifier/myapp
+    argocd-image-updater.argoproj.io/myapp.update-strategy: latest    # use latest tag
+    argocd-image-updater.argoproj.io/myapp.allow-tags: regexp:^.*$   # allow any tags
+    argocd-image-updater.argoproj.io/write-back-method: git          # write back to repo
+    argocd-image-updater.argoproj.io/git-branch: main                # update branch
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Demystifier-git/Deployment-strategy-and-Gitops-with-ArgoCD.git
+    targetRevision: main
+    path: Rollback update
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
