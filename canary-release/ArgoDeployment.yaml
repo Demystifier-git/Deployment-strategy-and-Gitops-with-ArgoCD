@@ -15,7 +15,7 @@ spec:
   source:
     repoURL: https://github.com/Demystifier-git/Deployment-strategy-and-Gitops-with-ArgoCD.git
     targetRevision: main
-    path: Canary release
+    path: Canary-release
   destination:
     server: https://kubernetes.default.svc
     namespace: default
