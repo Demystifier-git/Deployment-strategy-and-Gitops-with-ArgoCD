@@ -51,41 +51,27 @@ kubectl logs <load-pod-name>
 Scaling Behavior
 
 Pods scale up automatically under load
-
 Scale down gracefully when traffic reduces
+Jobs clean up automatically after finishing 
 
-Jobs clean up automatically after finishing ✅
-
-🔄 GitOps Workflow with Argo CD
+GitOps Workflow with Argo CD
 
 Commit & push manifest updates to GitHub
-
 Argo CD detects changes → syncs them to the cluster
-
 Kubernetes applies a rolling update automatically
 
-🐦 Canary Release with Kubernetes
-
+ Canary Release with Kubernetes
 A canary release rolls out a new version gradually:
-
 New version (canary) runs alongside the stable one
-
 Only a small % of traffic goes to the canary
-
 If it’s healthy → increase traffic until it becomes stable
-
 If issues appear → rollback quickly with minimal impact
+Think of it like sending a canary bird into a coal mine first — if it survives, the rest follow.
 
-👉 Think of it like sending a canary bird into a coal mine first — if it survives, the rest follow.
-
-📂 Inside the Repo
-
+Inside the Repo
 stable and canary Deployments
-
 Services to route traffic between versions
-
 Ingress / Istio VirtualService for traffic splitting
-
 Sample app to test version routing
 
 
