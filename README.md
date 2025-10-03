@@ -88,13 +88,6 @@ Ingress / Istio VirtualService for traffic splitting
 
 Sample app to test version routing
 
-🔮 Future Enhancements
-
-Add CI/CD pipeline with GitHub Actions
-
-Enable Argo CD Image Updater for automated image tags
-
-Integrate Prometheus & Grafana dashboards for monitoring
 
 👨‍💻 Author
 Delight David
